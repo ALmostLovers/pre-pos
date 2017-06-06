@@ -1,15 +1,37 @@
 'use strict';
 
 function countSameElements(collection) {
-  var element = collection[0];
-  for(var i = 0; i< collection; i ++)
+  var result = [];
+  for(var i = 0; i< collection.length; i ++)
   {
-    if (collection)
-    if(collection[i]==collection[i+1])
+    if(!check(collection[i],result))
     {
-      count++
+      result.push({key:collection[i],count:1});
     }
-    key = collection
+    else {
+      result[find(collection[i],result)].count++;
+    }
   }
-  return '实现练习要求，并改写该行代码。';
+  return result;
+}
+
+function check(element,result) {
+  for(var i = 0;i<result.length;i++)
+  {
+    if (element == result[i].key)
+    {
+      return 1;
+    }
+      }
+  return 0;
+}
+function find(element,result) {
+  for(var i = 0;i<result.length;i++)
+  {
+    if (element == result[i].key)
+    {
+      return i;
+    }
+  }
+
 }
